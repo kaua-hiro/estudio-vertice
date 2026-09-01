@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-body",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://estudio-vertice.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://estudio-vertice-lyart.vercel.app";
 const TITLE = "Estúdio Vértice — Design que incomoda, marca que fica";
 const DESCRIPTION =
   "Branding, motion e produto pra marcas que não querem passar despercebidas.";
