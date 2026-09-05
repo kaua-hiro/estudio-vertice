@@ -56,6 +56,33 @@ const WORK = [
   { name: "Cinza Ateliê", tag: "Site + CMS", color: "var(--color-primary)" },
 ];
 
+const STATS = [
+  { value: "8", label: "Anos transformando marca chata em marca lembrada" },
+  { value: "40+", label: "Identidades que saíram do papel e ficaram na cabeça" },
+  { value: "0", label: "Proposta morna entregue até hoje" },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "Antes a gente era só mais um café bonito no Instagram. Depois do Vértice, viramos a marca que todo mundo cita quando fala de branding gastronômico.",
+    name: "Marina Ferraz",
+    role: "Fundadora, Ferra Café",
+    color: "var(--color-primary)",
+  },
+  {
+    quote: "Testamos três agências antes. Nenhuma entregou uma linha de raciocínio tão clara quanto a do Vértice — ainda no primeiro call já sabíamos que era aquilo.",
+    name: "Diego Salles",
+    role: "CEO, Órbita Fit",
+    color: "var(--color-accent)",
+  },
+  {
+    quote: "O sistema gráfico que eles desenharam aguenta qualquer aplicação maluca que a nossa equipe de marketing inventa. Isso é raro de verdade.",
+    name: "Bia Nomura",
+    role: "Diretora de marca, Nômade Studio",
+    color: "var(--color-secondary)",
+  },
+];
+
 function fadeUp(delay = 0) {
   return {
     initial: { opacity: 0, y: 24 },
@@ -141,7 +168,7 @@ export default function Home() {
       </section>
 
       <div
-        className="overflow-hidden border-y-3 border-[var(--color-ink)] bg-[var(--color-ink)] py-3"
+        className="overflow-hidden border-y-3 border-[var(--color-ink)] bg-[var(--color-ink)] py-5"
         style={{
           borderTopWidth: 3,
           borderBottomWidth: 3,
@@ -149,18 +176,65 @@ export default function Home() {
           WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
         }}
       >
-        <div className="marquee-track flex w-max gap-8 whitespace-nowrap font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase text-[var(--color-background)]">
+        <div className="marquee-track marquee-track--wide flex w-max gap-6 whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, rep) => (
-            <span key={rep} className="flex gap-8">
-              {["Branding", "Motion", "Produto", "Estratégia", "Identidade"].map((w) => (
-                <span key={w} className="flex items-center gap-8">
-                  {w} <span className="text-[var(--color-primary)]">✦</span>
+            <span key={rep} className="flex gap-6">
+              {CASES.map((c) => (
+                <span
+                  key={c.titleLine1 + rep}
+                  className="flex items-center gap-3 border-3 pr-5"
+                  style={{ borderColor: "rgba(253, 242, 248, 0.25)", borderWidth: 3 }}
+                >
+                  <img
+                    src={c.img}
+                    alt=""
+                    className="h-16 w-24 shrink-0 object-cover grayscale"
+                    style={{ borderRight: "3px solid var(--color-background)" }}
+                  />
+                  <span className="font-[family-name:var(--font-display)] text-sm font-extrabold uppercase text-[var(--color-background)]">
+                    {c.titleLine1} <span className="text-[var(--color-primary)]">✦</span>
+                  </span>
                 </span>
               ))}
             </span>
           ))}
         </div>
       </div>
+
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <motion.div {...fadeUp(0)}>
+            <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-5xl">
+              Ninguém contrata agência
+              <br />
+              pra ficar igual ao concorrente.
+              <br />
+              <span className="text-[var(--color-primary)]">A gente concorda.</span>
+            </h2>
+            <p className="mt-6 max-w-md text-base font-medium leading-relaxed sm:text-lg">
+              Vértice existe pra marca que já cansou de brief morno e apresentação
+              com três opções &ldquo;seguras&rdquo;. A gente entrega uma direção
+              só — a certa — e defende ela com tipografia, cor e movimento até
+              você não conseguir mais imaginar sua marca de outro jeito.
+            </p>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.15)} className="brutal-block bg-[var(--color-card)]">
+            {STATS.map((s, i) => (
+              <div
+                key={s.label}
+                className="flex items-center gap-5 p-6"
+                style={i > 0 ? { borderTopWidth: 3, borderColor: "var(--color-ink)" } : undefined}
+              >
+                <span className="font-[family-name:var(--font-display)] text-4xl font-extrabold text-[var(--color-primary)] sm:text-5xl">
+                  {s.value}
+                </span>
+                <span className="text-sm font-semibold leading-snug">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       <section id="processo" className="mx-auto max-w-6xl px-6 py-20">
         <motion.h2 {...fadeUp(0)} className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
@@ -200,6 +274,34 @@ export default function Home() {
                 <span className="font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase text-[var(--color-ink)]">
                   {w.name}
                 </span>
+              </TiltCard>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <motion.h2 {...fadeUp(0)} className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+          Quem já passou pelo Vértice
+        </motion.h2>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <motion.div key={t.name} {...fadeUp(i * 0.12)} className="h-full">
+              <TiltCard className="flex h-full flex-col justify-between bg-[var(--color-card)] p-6">
+                <p className="text-sm font-medium leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                <div className="mt-6 flex items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border-3 border-[var(--color-ink)] font-[family-name:var(--font-display)] text-xs font-extrabold"
+                    style={{ backgroundColor: t.color, borderWidth: 3 }}
+                  >
+                    {t.name.charAt(0)}
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold">{t.name}</p>
+                    <p className="text-xs font-semibold opacity-70">{t.role}</p>
+                  </div>
+                </div>
               </TiltCard>
             </motion.div>
           ))}
