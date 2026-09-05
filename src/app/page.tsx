@@ -168,7 +168,7 @@ export default function Home() {
       </section>
 
       <div
-        className="overflow-hidden border-y-3 border-[var(--color-ink)] bg-[var(--color-ink)] py-5"
+        className="overflow-hidden border-y-3 border-[var(--color-ink)] bg-[var(--color-ink)] py-3"
         style={{
           borderTopWidth: 3,
           borderBottomWidth: 3,
@@ -176,24 +176,12 @@ export default function Home() {
           WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
         }}
       >
-        <div className="marquee-track marquee-track--wide flex w-max gap-6 whitespace-nowrap">
+        <div className="marquee-track flex w-max gap-8 whitespace-nowrap font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase text-[var(--color-background)]">
           {Array.from({ length: 2 }).map((_, rep) => (
-            <span key={rep} className="flex gap-6">
-              {CASES.map((c) => (
-                <span
-                  key={c.titleLine1 + rep}
-                  className="flex items-center gap-3 border-3 pr-5"
-                  style={{ borderColor: "rgba(253, 242, 248, 0.25)", borderWidth: 3 }}
-                >
-                  <img
-                    src={c.img}
-                    alt=""
-                    className="h-16 w-24 shrink-0 object-cover grayscale"
-                    style={{ borderRight: "3px solid var(--color-background)" }}
-                  />
-                  <span className="font-[family-name:var(--font-display)] text-sm font-extrabold uppercase text-[var(--color-background)]">
-                    {c.titleLine1} <span className="text-[var(--color-primary)]">✦</span>
-                  </span>
+            <span key={rep} className="flex gap-8">
+              {["Branding", "Motion", "Produto", "Estratégia", "Identidade"].map((w) => (
+                <span key={w} className="flex items-center gap-8">
+                  {w} <span className="text-[var(--color-primary)]">✦</span>
                 </span>
               ))}
             </span>

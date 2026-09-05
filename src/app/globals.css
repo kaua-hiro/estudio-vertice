@@ -123,10 +123,6 @@ body {
   animation: marquee 18s linear infinite;
 }
 
-.marquee-track--wide {
-  animation-duration: 34s;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
